@@ -53,7 +53,7 @@ function showWindSpeed(response) {
 
 function showConditions(response) {
   let conditions = response.data.condition.description;
-  let description = document.querySelector("#decription");
+  let description = document.querySelector("#description");
   description.innerHTML = `, ${conditions}`;
 }
 
