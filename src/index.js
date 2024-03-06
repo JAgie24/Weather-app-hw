@@ -1,8 +1,5 @@
 function search(event) {
   event.preventDefault();
-  let h1 = document.querySelector("h1");
-  let city = document.querySelector("#search-input");
-  h1.innerHTML = city.value;
   let apiKey = "9afb40e8o55c131680361805450t0f39";
   let url = `https://api.shecodes.io/weather/v1/current?query=${city.value}&key=${apiKey}&units=metric`;
   axios.get(url).then(showTemp);
@@ -65,6 +62,8 @@ function showHumidity(response) {
 
 function showCity(response) {
   let city = response.data.city;
+  let h1 = document.querySelector("h1");
+  h1.innerHTML = city;
   console.log(city);
 }
 
