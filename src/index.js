@@ -59,7 +59,8 @@ function showConditions(response) {
 
 function showHumidity(response) {
   let humidity = response.data.temperature.humidity;
-  console.log(humidity);
+  let humidityValue = document.querySelector("#humidity");
+  humidityValue.innerHTML = `${humidity}%`;
 }
 
 function showCity(response) {
