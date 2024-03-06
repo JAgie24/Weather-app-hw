@@ -6,6 +6,7 @@ function search(event) {
   let apiKey = "9afb40e8o55c131680361805450t0f39";
   let url = `https://api.shecodes.io/weather/v1/current?query=${city.value}&key=${apiKey}&units=metric`;
   axios.get(url).then(showTemp);
+  axios.get(url).then(showWindSpeed);
 }
 
 function formatDate(date) {
@@ -39,6 +40,12 @@ function showTemp(response) {
   let temperature = response.data.temperature.current;
   let temperatureValue = document.querySelector(".current-temperature-value");
   temperatureValue.innerHTML = Math.round(temperature);
+  console.log(temperature);
+}
+
+function showWindSpeed(response) {
+  let windSpeed = response.data;
+  console.log(windSpeed);
 }
 
 let searchForm = document.querySelector("#search-form");
