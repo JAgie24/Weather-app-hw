@@ -1,33 +1,36 @@
 function search(event) {
   event.preventDefault();
-  let city = document.querySelector("#search-input");
-  let apiKey = "9afb40e8o55c131680361805450t0f39";
-  let url = `https://api.shecodes.io/weather/v1/current?query=${city.value}&key=${apiKey}&units=metric`;
-  axios.get(url).then(showCity);
-  axios.get(url).then(matchIcon);
-  axios.get(url).then(showTemp);
-  axios.get(url).then(showConditions);
-  axios.get(url).then(showHumidity);
-  axios.get(url).then(showWindSpeed);
+  let cityElement = document.querySelector("#search-input");
+  let city = cityElement.value;
+  showCity(city);
 }
 
-function showCity(response) {
-  let city = response.data.city;
+function showCity(city) {
   let h1 = document.querySelector("h1");
   h1.innerHTML = city;
-  console.log(city);
+  let apiKey = "9afb40e8o55c131680361805450t0f39";
+  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(url).then(displaySearch);
 }
 
-function matchIcon(response) {
+showCity("Toronto");
+
+function displaySearch(response) {
   let iconElement = document.querySelector(".current-temperature-icon");
   let icon = response.data.condition.icon_url;
   iconElement.innerHTML = `<img src="${icon}" class="current-temperature" />`;
-}
-
-function showTemp(response) {
   let temperature = response.data.temperature.current;
   let temperatureValue = document.querySelector(".current-temperature-value");
   temperatureValue.innerHTML = Math.round(temperature);
+  let conditions = response.data.condition.description;
+  let description = document.querySelector("#description");
+  description.innerHTML = `, ${conditions}`;
+  let humidity = response.data.temperature.humidity;
+  let humidityValue = document.querySelector("#humidity");
+  humidityValue.innerHTML = `${humidity}%`;
+  let windSpeed = response.data.wind.speed;
+  let wind = document.querySelector("#wind-speed");
+  wind.innerHTML = `${windSpeed}km/h`;
 }
 
 function formatDate(date) {
@@ -57,24 +60,6 @@ function formatDate(date) {
   return `${formattedDay} ${hours}:${minutes}`;
 }
 
-function showConditions(response) {
-  let conditions = response.data.condition.description;
-  let description = document.querySelector("#description");
-  description.innerHTML = `, ${conditions}`;
-}
-
-function showHumidity(response) {
-  let humidity = response.data.temperature.humidity;
-  let humidityValue = document.querySelector("#humidity");
-  humidityValue.innerHTML = `${humidity}%`;
-}
-
-function showWindSpeed(response) {
-  let windSpeed = response.data.wind.speed;
-  let wind = document.querySelector("#wind-speed");
-  wind.innerHTML = `${windSpeed}km/h`;
-}
-
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
@@ -82,4 +67,3 @@ let currentDateELement = document.querySelector("#current-date");
 let currentDate = new Date();
 
 currentDateELement.innerHTML = formatDate(currentDate);
-showCity("Toronto");
