@@ -79,7 +79,8 @@ function displayForecast() {
             <div class="icon">⛅️</div>
             <div class="temperature">
               <span class="max">12</span>
-              <span class="min">5</span>`;
+              <span class="min">5</span>
+              </div>`;
   });
 
   let forecast = document.querySelector("#forecast");
