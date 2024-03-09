@@ -69,11 +69,10 @@ let currentDate = new Date();
 currentDateELement.innerHTML = formatDate(currentDate);
 
 function displayForecast() {
-  let forecast = document.querySelector("#forecast");
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
 
   days.forEach(function (day) {
-    let forecastHtml = "";
     forecastHtml =
       forecastHtml +
       `   <div class="day">${day}</div>
@@ -83,6 +82,7 @@ function displayForecast() {
               <span class="min">5</span>`;
   });
 
+  let forecast = document.querySelector("#forecast");
   forecast.innerHTML = forecastHtml;
 }
 
