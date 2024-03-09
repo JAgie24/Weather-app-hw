@@ -33,6 +33,9 @@ function displaySearch(response) {
   wind.innerHTML = `${windSpeed}km/h`;
 }
 
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", search);
+
 function formatDate(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
@@ -60,10 +63,26 @@ function formatDate(date) {
   return `${formattedDay} ${hours}:${minutes}`;
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", search);
-
 let currentDateELement = document.querySelector("#current-date");
 let currentDate = new Date();
 
 currentDateELement.innerHTML = formatDate(currentDate);
+
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `   <div class="day">${day}</div>
+            <div class="icon">⛅️</div>
+            <div class="temperature">
+              <span class="max">12</span>
+              <span class="min">5</span>`;
+  });
+
+  forecast.innerHTML = forecastHtml;
+}
+
+displayForecast();
