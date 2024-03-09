@@ -106,8 +106,12 @@ a {
 }
 .temperature {
   font-size: 13px;
+  color: #f65282;
 }
 
+.max {
+  font-weight: bold;
+}
 .min {
   opacity: 0.5;
 }
