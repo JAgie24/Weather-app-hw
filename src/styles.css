@@ -97,26 +97,39 @@ a {
 
 .weather-forecast {
   padding: 30px 0px;
-  text-align: center;
-}
-
-.forecast-day {
-  display: block;
+  display: flex;
+  justify-content: space-around;
 }
 
 .day {
   font-size: 16px;
   opacity: 0.5;
+  text-align: center;
+  color: rgba(39, 33, 66, 0.4);
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 10px;
 }
-
+.forecast-icon {
+  width: 88px;
+  height: 88px;
+  display: block;
+  margin: 0 auto;
+}
 .temperature {
+  text-align: center;
   font-size: 13px;
   color: #f65282;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .max {
   font-weight: bold;
+  padding: 0 10px;
 }
 .min {
   opacity: 0.5;
+  padding: 0 10px;
 }
