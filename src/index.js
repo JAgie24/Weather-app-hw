@@ -31,6 +31,8 @@ function displaySearch(response) {
   let windSpeed = response.data.wind.speed;
   let wind = document.querySelector("#wind-speed");
   wind.innerHTML = `${windSpeed}km/h`;
+
+  getForecast(response.data.city);
 }
 
 let searchForm = document.querySelector("#search-form");
@@ -70,13 +72,12 @@ currentDateELement.innerHTML = formatDate(currentDate);
 
 function getForecast(city) {
   let apiKey = "9afb40e8o55c131680361805450t0f39";
-  let url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}`;
-  console.log(url);
+  let url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(url).then(displayForecast);
 }
 
-getForecast("Toronto");
-
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = "";
 
