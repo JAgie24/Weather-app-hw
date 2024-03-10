@@ -77,10 +77,9 @@ function getForecast(city) {
 }
 
 function formatDay(timestamp) {
-  let day = date.getDay();
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  return days[day];
+  return days[date.getDay()];
 }
 
 function displayForecast(response) {
