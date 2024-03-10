@@ -77,19 +77,18 @@ function getForecast(city) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  console.log(response.data.daily);
   let forecastHtml = "";
 
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
     forecastHtml =
       forecastHtml +
       `  <div class="forecast-day"> 
       <div class="day">${day}</div>
-            <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png" class="forecast-icon" />
+            <img src="${day.condition.icon_url}" class="forecast-icon" />
             <div class="temperature">
-              <span class="max">12</span>
-              <span class="min">5</span>
+              <span class="max">${Math.round(day.temperature.maximum)}</span>
+              <span class="min">${Math.round(day.temperature.minimum)}</span>
               </div>
               </div>`;
   });
