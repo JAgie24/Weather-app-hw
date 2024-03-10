@@ -75,11 +75,13 @@ function displayForecast() {
   days.forEach(function (day) {
     forecastHtml =
       forecastHtml +
-      `   <div class="day">${day}</div>
+      `  <div class="forecastDay"> 
+      <div class="day">${day}</div>
             <div class="icon">⛅️</div>
             <div class="temperature">
               <span class="max">12</span>
               <span class="min">5</span>
+              </div>
               </div>`;
   });
 
