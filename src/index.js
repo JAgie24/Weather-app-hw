@@ -77,7 +77,7 @@ function displayForecast() {
       forecastHtml +
       `  <div class="forecast-day"> 
       <div class="day">${day}</div>
-            <div class="icon">⛅️</div>
+            <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-night.png" class="forecast-icon" />
             <div class="temperature">
               <span class="max">12</span>
               <span class="min">5</span>
