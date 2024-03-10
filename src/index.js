@@ -74,6 +74,8 @@ function getForecast(city) {
   console.log(url);
 }
 
+getForecast("Toronto");
+
 function displayForecast() {
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = "";
